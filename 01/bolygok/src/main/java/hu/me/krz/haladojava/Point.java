@@ -25,12 +25,9 @@ public class Point {
 		return z;
 	}
 	
-	public Point Translate(Point point, Point move){
-		Point p = new Point(point.x,point.y,point.z); 
-		p.x += move.x;
-		p.y += move.y;
-		p.z += move.z;
-		return p;
+	public void Translate(Point move) {
+		this.x += move.x;
+		this.y += move.y;
+		this.z += move.z;
 	}
-
 }

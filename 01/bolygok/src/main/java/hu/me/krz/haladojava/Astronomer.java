@@ -2,6 +2,8 @@ package hu.me.krz.haladojava;
 
 import java.util.List;
 import hu.me.krz.haladojava.*;
+
+
 import java.util.Random;
 
 
@@ -20,18 +22,23 @@ public class Astronomer {
 	}
 	
 	public void observeTheSky(){
-		List<Planet> lista;
-		Planet p;
-		Point movepos;
-		Point pos;
+		
 		Random r = new Random();
+		Planet[] bolygok = new Planet[10];
 		
 		for (int i = 0; i < 10; i++) {
-			r = r.nextInt(1);
-			movepos.x += 10; 
-			pos = Translate(pos, movepos);
-			p = new Planet();
-			lista.add(p);
+			double radius = r.nextInt(1);
+			Point pos = new Point(0, 0, 0);
+			Point movepos = new Point(((i + 1) * 10), 0, 0);
+			pos.Translate(movepos);
+			bolygok[i] = new Planet(pos, radius, name);
+			
 		}
+		
+	}
+	@Override
+	public String toString() {
+		
+		return "Astronomer [discoveredPlanets=" +planets + ", name=" + name + "]";
 	}
 }

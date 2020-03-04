@@ -1,5 +1,5 @@
 package mypackage;
-
+// My szemely
 public class Szemely {
 	private final String name;
 	private final int age;

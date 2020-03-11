@@ -12,7 +12,7 @@ public class Planet {
 		this.radius = radius;
 		this.name = name;
 	}
-
+	
 	public Point getPosition() {
 		return position;
 	}

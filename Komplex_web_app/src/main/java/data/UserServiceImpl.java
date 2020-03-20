@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 
 
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
+
 		if(isValid(user)) {
 			repository.save(user);
 		}

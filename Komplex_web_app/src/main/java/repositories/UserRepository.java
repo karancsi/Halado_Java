@@ -14,7 +14,7 @@ public class UserRepository implements UserModify{
 	public void save(User user) {
 		if(!user.getName().contains(" ")) {
 			userList.add(user);
-			log.config("User saved: " + user.getName());
+			log.info("User saved: " + user.getName());
 		}
 		
 	}

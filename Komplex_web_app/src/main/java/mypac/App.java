@@ -20,14 +20,14 @@ public class App {
 		List<Validator> validators = new ArrayList<Validator>();
 		validators.add(new SpaceValidator());
 		validators.add(new LengthValidator());
-		 log.config("Valid felhasználó megállapításának feltételei");
-		 log.config("Megnézzük a következõ 3 példában ezek megfelelnek-e");
+		 log.info("Valid felhasználó megállapításának feltételei");
+		 log.info("Megnézzük a következõ 3 példában ezek megfelelnek-e");
 		
 		repository.save(new User("Lacoka", "fgk54e", true));
 		repository.save(new User("Bazsika", "GoZ532", true));
 		repository.save(new User("Lacika", "Gdsee6", true));
 		for (User user : repository.findAll()) {
-			log.config("Adatok:" +user.getName());
+			log.info("Adatok:" +user.getName());
 		}
 	}
 	

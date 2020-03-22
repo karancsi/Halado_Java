@@ -32,7 +32,7 @@ public class ConsoleReader {
 				ok = true;
 			} catch (Exception e) {
 				
-				log.config("Invalid input, input was not an Integer");
+				log.info("Invalid input, input was not an Integer");
 			}
 		} while (!ok);
 		return number;
@@ -50,7 +50,7 @@ public class ConsoleReader {
 				number = readInt();
 				if(number <= ceiling && number >= floor)
 					ok = true;
-				else log.config("Invalid input, Integer was not in the required range");
+				else log.info("Invalid input, Integer was not in the required range");
 				
 		} while (!ok);
 		return number;
@@ -66,7 +66,7 @@ public class ConsoleReader {
 			returnValue = reader.readLine();
 		} catch (IOException e) {
 
-			log.config("Error");
+			log.info("Error");
 		}
 		return returnValue;
 	}
@@ -83,7 +83,7 @@ public class ConsoleReader {
 				ok = true;
 			}
 			else {
-				log.config("Input is longer than what is required");
+				log.info("Input is longer than what is required");
 			}
 				
 		} while (!ok);
@@ -102,7 +102,7 @@ public class ConsoleReader {
 				ok = true;
 			}
 			else {
-				log.config("Input is shorter than what is required");
+				log.info("Input is shorter than what is required");
 			}
 				
 		} while (!ok);
@@ -122,7 +122,7 @@ public class ConsoleReader {
 			}
 			else {
 				String s = "Input has to be between " + (minlength + 1) + " and " + (maxLength + 1) + "in length.";
-				log.config(s);
+				log.info(s);
 			}
 				
 		} while (!ok);
@@ -136,7 +136,7 @@ public class ConsoleReader {
 		Date ret = null;
 		do {
 			try {	
-				log.config("Dátum formátum: yyyy.mm.dd\n");
+				log.info("Dátum formátum: yyyy.mm.dd\n");
 				String toConvert = readString();
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 				LocalDate date = LocalDate.parse(toConvert, formatter);
@@ -144,7 +144,7 @@ public class ConsoleReader {
 				ok = true;
 				
 			} catch(DateTimeParseException e) {
-				log.config("A beírt dátum nem megfelelõ formátumú!");
+				log.info("A beírt dátum nem megfelelõ formátumú!");
 			}
 		}while(!ok);
 		return ret;

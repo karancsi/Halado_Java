@@ -1,4 +1,4 @@
-package main.java;
+//package main.java;
 
 public interface Validator {
     boolean isValid(User user);

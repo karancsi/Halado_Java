@@ -1,4 +1,4 @@
-package main.java;
+//package main.java;
 
 public class NeptunCodeGenerator {
     private static int counter = 0;
@@ -6,6 +6,4 @@ public class NeptunCodeGenerator {
         return counter++;
     }
 
-    private NeptunCodeGenerator() {
-    }
 }

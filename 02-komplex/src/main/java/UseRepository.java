@@ -1,4 +1,4 @@
-package main.java;
+//package main.java;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -7,7 +7,7 @@ public class UseRepository implements UserModify {
     Logger log = Logger.getLogger(Komplex.class.toString());
     private List<User> users = new ArrayList<>();
     public void save(User user) {
-        log.info("%s mentve%n"+ user.getName());
+        log.info(" mentve"+ user.getName());
         users.add(user);
     }
     public User getByNektunKod(String neptunkod) {

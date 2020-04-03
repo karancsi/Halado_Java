@@ -9,8 +9,10 @@ class NeptunCodeGeneratorTest {
 	void test() {
 		NeptunCodeGenerator ncg = new NeptunCodeGenerator();
 	
-		assertEquals(ncg.getNextCounter(), 0);
-		assertEquals(ncg.getNextCounter(), 1);
+		int valami = ncg.getNextCounter();
+		int valami2 = ncg.getNextCounter();
+		assertEquals(valami,1);
+		assertEquals(valami2,2);
 	}
 
 }

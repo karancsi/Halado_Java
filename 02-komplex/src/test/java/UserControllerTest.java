@@ -4,26 +4,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class UserControllerTest {
 
-	/*@Test
+	
+	UserService userService = mock(UserService.class);
+	
+    NeptunCodeGenerator neptunCodeGenerator = mock(NeptunCodeGenerator.class);
+    
+    UserController uc = new UserController(userService, neptunCodeGenerator);
+	
+	@Test
 	public void UserControllerConstructorTest() {
+		
 		UserService userService = mock(UserService.class);
-	    NeptunCodeGenerator neptunCodeGenerator = new NeptunCodeGenerator();
+		
+	    NeptunCodeGenerator neptunCodeGenerator = mock(NeptunCodeGenerator.class);
 	    
 	    UserController uc = new UserController(userService, neptunCodeGenerator);
 	    
-	}*/
+	}
 	
 	@Test
 	void UserControllerSaveTest() {
-		UserController uct = mock(UserController.class);
+		UserDto udto = mock(UserDto.class);
+		uc.save(udto);
 		
-		UserDto udto = new UserDto("asdfg");
-		//User user = new User("Asdasdasd", true, "ABC123");
-		doNothing().when(uct).save(udto);
-		verify(uct, times(1));
+		
+		verify(userService, times(1)).save(Mockito.any(User.class));
 		
 	}
 

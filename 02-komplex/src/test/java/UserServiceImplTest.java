@@ -10,23 +10,19 @@ import org.junit.jupiter.api.Test;
 
 class UserServiceImplTest {
 
-	@Test
-	void testUserServiceImpl() {
-	/*	UseRepository urt = mock(UseRepository.class);
-		User u = new User("asdf", true, "sdfgh");
-		doNothing().when(urt).save(u);
-		verify(urt, times(1));*/
-	}
-
+	UserModify um= mock(UserModify.class);
+	Validator va = mock (Validator.class);
+	List<Validator> vlist;
+	User u = mock(User.class);
+	UserServiceImpl usimpl = new UserServiceImpl(um, vlist);
+	
 	@Test
 	void testSave() {
-		UserModify userModify = null;
-	    List<Validator> validators = null;
-		UserServiceImpl usi = new UserServiceImpl(userModify, validators);
-		User u = mock(User.class);
-		usi.save(u);
+		//usimpl.save(u);
 		
+		//verify(usimpl, times(1)).save(u);
 		
 	}
+
 
 }

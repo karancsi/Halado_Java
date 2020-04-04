@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Unicorns calculator</title>
+
+</head>
+<body>
+<p>Ez az app az unikornisok számának összeadására és csillámerejük szorzóképességének felmérésére íódott.</p>
+
+<h1>Simple:</h1>
+<form action="#" th:action="@{/calculator}" th:object="${cal}" method="POST">
+    <input type="text" th:field="*{operandL}"/>
+    <input type="text" th:field="*{operandR}"/>
+    <p>
+        <input type="submit" class="button" name="add" value="+"/>
+        <input type="submit" class="button" name="subtract" value="-"/>
+        <input type="submit" class="button" name="multiply" value="*"/>
+        <input type="submit" class="button" name="divide" value="/"/>
+        <input type="submit" class="button" name="clearSimple" value="C"/>
+    </p>
+     <h1><p th:text="'result: ' + ${result}"/></h1>
+</form>
+<label color="black" width="100" size="200" >sdfgh</label>
+</body>
+</html>

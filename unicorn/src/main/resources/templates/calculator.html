@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<style>
+body {
+  background-color: #9e5978;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  color: white;
+  font-size: 20px;
+}
+form{
+text-align: center;
+}
+.button{
+background-color: #512a57;
+  border: #000000;
+  border-width: 60px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 6px 3px;
+  cursor: pointer;
+}
+.in{
+font-size: 15px;
+padding: 15px 15px 15px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Unicorns calculator</title>
 
 </head>
 <body>
-<p>Ez az app az unikornisok számának összeadására és csillámerejük szorzóképességének felmérésére íódott.</p>
+<p text-align="center">Ez az app az unikornisok számának összeadására és csillámerejük szorzóképességének felmérésére íródott.</p>
 
-<h1>Simple:</h1>
+<h1>Unicorn Calculator:</h1>
 <form action="#" th:action="@{/calculator}" th:object="${cal}" method="POST">
-    <input type="text" th:field="*{operandL}"/>
-    <input type="text" th:field="*{operandR}"/>
+    <input class="in" type="text" th:field="*{operandL}"/>
+    <input class="in" type="text" th:field="*{operandR}"/>
     <p>
         <input type="submit" class="button" name="add" value="+"/>
         <input type="submit" class="button" name="subtract" value="-"/>
@@ -19,8 +56,8 @@
         <input type="submit" class="button" name="divide" value="/"/>
         <input type="submit" class="button" name="clearSimple" value="C"/>
     </p>
-     <h1><p th:text="'result: ' + ${result}"/></h1>
+     <h1><p th:text="'Eredmény: ' + ${result}"/></h1>
 </form>
-<label color="black" width="100" size="200" >sdfgh</label>
+
 </body>
 </html>

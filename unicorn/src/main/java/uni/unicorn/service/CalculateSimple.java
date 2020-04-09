@@ -26,7 +26,7 @@ public class CalculateSimple {
     }
 
 
-    public Calculator clearSimple(Calculator model){
+   public Calculator clearSimple(Calculator model){
         model.setOperandL(0);
         model.setOperandR(0);
         return model;

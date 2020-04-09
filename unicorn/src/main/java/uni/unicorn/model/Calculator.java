@@ -48,8 +48,8 @@ public class Calculator {
     @Getter
     */
     
-	 public double calculateResult() {
-	        double result = 0;
+	 /*public double calculateResult() {
+	        double result = 10;
 	        switch(this.operator) {
 	            case "+":
 	                result = this.operandL + this.operandR;
@@ -72,7 +72,7 @@ public class Calculator {
 
 	        return result;
 	    }
-  
+  */
     
     
 }

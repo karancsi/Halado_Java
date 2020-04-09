@@ -7,16 +7,16 @@ import uni.unicorn.model.Calculator;
 @Service
 public class CalculateSimple {
 
-	public int add(Calculator model){
-        return (int) (model.getOperandL() + model.getOperandR());
+	public double add(Calculator model){
+        return (model.getOperandL() + model.getOperandR());
     }
 
-    public int subtract(Calculator model){
-        return (int) (model.getOperandL() - model.getOperandR());
+    public double subtract(Calculator model){
+        return  (model.getOperandL() - model.getOperandR());
     }
 
-    public int multiply(Calculator model){
-        return (int) (model.getOperandL() * model.getOperandR());
+    public double multiply(Calculator model){
+        return (model.getOperandL() * model.getOperandR());
     }
 
     public double divide(Calculator model){

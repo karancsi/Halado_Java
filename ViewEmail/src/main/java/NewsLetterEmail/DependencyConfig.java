@@ -9,8 +9,5 @@ import NewsLetterEmail.ModelLogicEmail.EmailModel;
 public class DependencyConfig {
 
 	
-	@Bean
-	public EmailModel emailmodel () {
-		return new EmailModel();
-	}
+
 }

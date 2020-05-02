@@ -32,7 +32,7 @@ public class EmailController {
 	private EmailDto ed;
 	private NewsLetterSer ser;
 	
-/*	@Autowired
+@Autowired
 	public void setEDto(EmailDto ed) {
 		this.ed = ed;
 	}
@@ -42,14 +42,12 @@ public class EmailController {
 		this.ser = ser;
 	}
 	
-	@Autowired
-	public void setELogic(EmailLogic ELogic) {
-		this.ELogic = ELogic;
-	}
-*/	
+
 	@GetMapping(value="/")
 	public String showIndex(){
-		log.info("index");
+		//log.info("index");
+		ModelAndView mav =  new ModelAndView();
+		mav.addObject("ed", new EmailDto());
 		return "index";
 	}
 	
@@ -62,6 +60,16 @@ public class EmailController {
 		m.addObject("AddNewsLetter", ser.getAllNewsLetter()); */
 //		String valami = "emailForm";
 		return "emailForm";
+	}
+	
+	@GetMapping(value="/addNewsLetter")
+	public ModelAndView showAddPage(){
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto());
+	}
+	@PostMapping("/addNewsLetter")
+	public ModelAndView valami(@Valid EmailDto ed) {
+		ser.add(ed);
+		return new ModelAndView("redirect:/");
 	}
 	
 	

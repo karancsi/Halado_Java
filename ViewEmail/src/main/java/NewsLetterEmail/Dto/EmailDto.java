@@ -1,6 +1,7 @@
 package NewsLetterEmail.Dto;
 
 import java.sql.Date;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -53,6 +54,20 @@ public class EmailDto {
 	}
 
 	public void setEmailDate(Date emailDate) {
+		this.emailDate = emailDate;
+	}
+
+	
+	public EmailDto() {
+		super();
+	}
+
+	public EmailDto(long id,String emailSubject, String emailMessage, Date emailDate) {
+		super();
+		Random r = new Random();
+		this.id =(long)r.nextInt(100000);
+		this.emailSubject = emailSubject;
+		this.emailMessage = emailMessage;
 		this.emailDate = emailDate;
 	}
 

@@ -1,5 +1,18 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
 <h1>Remélem már jó lesz.</h1>
+<form action="/" method="post" th:object="${ed}">
+Subject
+ <input type="text" th:field="*{emailSubject}" />
+ Message
+ <input type="text" th:field="*{emailMessage}" />
+ Date
+ <input type="text"/>
+
+ 
+ <button type="submit" name="action" value="move">Add</button>
+
+</form>
+<span th:text="${ed}"></span>
 </body>
 </html>

@@ -32,12 +32,11 @@ public class EmailController {
 	private EmailDto ed;
 	private NewsLetterSer ser;
 	
-@Autowired
+
 	public void setEDto(EmailDto ed) {
 		this.ed = ed;
 	}
 
-	@Autowired
 	public void setNewsLSer(NewsLetterSer ser) {
 		this.ser = ser;
 	}
@@ -46,8 +45,8 @@ public class EmailController {
 	@GetMapping(value="/")
 	public String showIndex(){
 		//log.info("index");
-		ModelAndView mav =  new ModelAndView();
-		mav.addObject("ed", new EmailDto());
+	//	ModelAndView mav =  new ModelAndView();
+	//	mav.addObject("ed", new EmailDto());
 		return "index";
 	}
 	
@@ -69,8 +68,13 @@ public class EmailController {
 	@PostMapping("/addNewsLetter")
 	public ModelAndView valami(@Valid EmailDto ed) {
 		ser.add(ed);
-		return new ModelAndView("redirect:/");
+		ModelAndView mav = new ModelAndView();
+				mav.addObject("ed", ser);
+				System.out.println("asdfdghjh"+ ed.getEmailSubject());
+		return mav;
 	}
+	
+	
 	
 	
 

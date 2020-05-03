@@ -3,6 +3,10 @@ package NewsLetterEmail.Dto;
 import java.sql.Date;
 import java.util.Random;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import NewsLetterEmail.ModelLogicEmail.EmailModel;
@@ -17,6 +21,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EmailDto {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
 	private String emailSubject;
@@ -64,8 +70,7 @@ public class EmailDto {
 
 	public EmailDto(long id,String emailSubject, String emailMessage, Date emailDate) {
 		super();
-		Random r = new Random();
-		this.id =(long)r.nextInt(100000);
+		this.id = id;
 		this.emailSubject = emailSubject;
 		this.emailMessage = emailMessage;
 		this.emailDate = emailDate;

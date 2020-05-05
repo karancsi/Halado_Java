@@ -64,12 +64,11 @@ public class EmailDto {
 	}
 
 	
-	public EmailDto() {
+	/*public EmailDto() {
 		super();
-	}
+	}*/
 
 	public EmailDto(long id,String emailSubject, String emailMessage, Date emailDate) {
-		super();
 		this.id = id;
 		this.emailSubject = emailSubject;
 		this.emailMessage = emailMessage;

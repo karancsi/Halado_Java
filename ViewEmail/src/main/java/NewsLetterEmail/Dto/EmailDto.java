@@ -31,6 +31,7 @@ public class EmailDto {
 	
 	private Date emailDate;
 
+	
 	public long getId() {
 		return id;
 	}

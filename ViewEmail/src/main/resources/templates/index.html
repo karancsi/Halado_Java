@@ -1,10 +1,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
 <body>
-<h1>Rem�lem m�r j� lesz.</h1>
-<h2>Spring boot test :D h�tha m�k�dik</h2>
+<h1>Remélem már jó lesz.</h1>
+<h2>Spring boot test :D hátha működik</h2>
 <ol>
-
-        <li th:each="letter : ${letters}" th:text="${letter}"></li>
+        <li th:each="letter : ${letters}" >
+        <span th:text="${letter.id}"></span> Tárgy:<span th:text="${letter.emailSubject}"></span> Üzenet:<span th:text="${letter.emailMessage}">
+        </span>
+        <button type="button"> Törlés</button>
+        <button type="button"> Módosítás</button> </li>
     </ol>
 </body>
 </html>

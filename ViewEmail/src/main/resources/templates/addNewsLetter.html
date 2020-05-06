@@ -5,15 +5,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/addNewsLetter" method="post" th:object = "${ed}">
+<form action="#" th:action="@{/addNewsLetter}" method="post" th:object = "${ed}">
 id
- <input type="number" th:field="*{id}" />
+ <input type="number" id="id" th:field="*{id}" />
 Subject
- <input type="text" th:field="*{emailSubject}" />
+ <input type="text" id="emailSubject" th:field="*{emailSubject}" />
  Message
- <input type="text" th:field="*{emailMessage}" />
+ <input type="text" id="emailMessage" th:field="*{emailMessage}" />
  Date
- <input type="date" value="2020-04-12"
+ <input type="date" id="emailDate" value="2020-04-12"
        min="2020-01-01" max="2020-12-31"th:field="*{emailDate}"/>
 
  

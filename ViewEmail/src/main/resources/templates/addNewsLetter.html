@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -7,18 +7,25 @@
 <body>
 <form action="#" th:action="@{/addNewsLetter}" method="post" th:object = "${ed}">
 id
- <input type="number" id="id" th:field="*{id}" />
+ <input type="number" id="id" th:field="*{id}" value="0"/>
 Subject
- <input type="text" id="emailSubject" th:field="*{emailSubject}" />
+ <input type="text" id="emailSubject" th:field="*{emailSubject}" value= "asd" />
  Message
  <input type="text" id="emailMessage" th:field="*{emailMessage}" />
  Date
- <input type="date" id="emailDate" value="2020-04-12"
-       min="2020-01-01" max="2020-12-31"th:field="*{emailDate}"/>
+ <input type="date" id="emailDate" name="emailDate" value="1994-01-01"
+       min="2020-01-01" max="2020-12-31" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/> <!--  th:field="*{emailDate}"  th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/>-->
+       
 
  
- <button type="submit" name="action" value="emailForm">Add</button>
+ <button type="submit" name="action" >Add</button>
+ 
+ <p>
+ <a href="/">Kezdőoldal</a>
+ </p>
 
 </form>
 </body>
 </html>
+
+

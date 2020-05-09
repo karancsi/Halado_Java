@@ -15,6 +15,10 @@ public class NewsLetterSer implements INewsLetterSer {
 
 	private NewsLetterRepo nlr ;
 	
+	public NewsLetterSer(NewsLetterRepo newsLetterRepo) {
+		this.nlr = newsLetterRepo;
+	}
+	
 	@Autowired
 	public void setRepo (NewsLetterRepo newsLetterRepo)
 	{

@@ -1,5 +1,10 @@
 package NewsLetterEmail.Dto;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
@@ -8,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import NewsLetterEmail.ModelLogicEmail.EmailModel;
 import lombok.AllArgsConstructor;
@@ -32,6 +38,7 @@ public class EmailDto {
 	
 	private String emailMessage;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date emailDate;
 
 	
@@ -77,6 +84,7 @@ public class EmailDto {
 		this.emailSubject = emailSubject;
 		this.emailMessage = emailMessage;
 		this.emailDate = d;
+		
 	}
 
 

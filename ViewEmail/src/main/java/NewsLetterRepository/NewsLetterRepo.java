@@ -18,7 +18,6 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	@PostConstruct
 	public void init() {
-		//newsLetterList.add(new EmailDto(0,"sdghjk","wertzuio",d));
 		newsLetterList.add(new EmailDto(0,"sdgasdfhjk","wertzuio",d));
 		newsLetterList.add(new EmailDto(12,"sdgasdfhjk","asdfgio",d));
 		newsLetterList.add(new EmailDto(32,"k","adfghfgio",d));

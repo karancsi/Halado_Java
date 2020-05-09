@@ -3,12 +3,9 @@
 <body>
 <h1>Remélem már jó lesz.</h1>
 <h2>Spring boot test :D hátha működik</h2>
-<ol>
-        <li th:each="letter : ${letters}" >
-        <span th:text="${letter.id}"></span> Tárgy:<span th:text="${letter.emailSubject}"></span> Üzenet:<span th:text="${letter.emailMessage}">
-        </span>
-        <button type="button"> Törlés</button>
-        <button type="button"> Módosítás</button> </li>
-    </ol>
+
+<a href="addNewsLetter">Új hírlevél felvitele</a>
+<a href="emailList">Hírlevelek listázása</a>
 </body>
 </html>
+

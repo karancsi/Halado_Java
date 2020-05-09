@@ -35,5 +35,19 @@ padding: 15px 15px 15px;
 <body>
 <p text-align="center">Ez az app az unikornisok által írt hírlevelek listázására, azok módosítsára és törlésére szolgál.</p>
 
+<ol>
+        <li th:each="letter : ${letters}" >
+        <span th:text="${letter.id}"></span> Tárgy:
+        <span th:text="${letter.emailSubject}"></span> Üzenet:
+		<span th:text="${letter.emailMessage}"></span> Dátum:
+		<span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span>
+		
+        
+        <button type="submit" name="delete"> Törlés</button>
+        <button type="submit"> Módosítás</button> </li>
+    </ol>
+ <p>
+ <a href="/">Kezdőoldal</a>
+ </p>
 </body>
 </html>

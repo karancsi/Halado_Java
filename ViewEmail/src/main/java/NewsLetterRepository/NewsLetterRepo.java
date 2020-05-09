@@ -1,7 +1,10 @@
 package NewsLetterRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
@@ -11,7 +14,15 @@ import NewsLetterEmail.Dto.EmailDto;
 public class NewsLetterRepo implements INewsLetterRep {
 
 	List<EmailDto> newsLetterList = new ArrayList<>();
+	Date d = new Date();
 
+	@PostConstruct
+	public void init() {
+		//newsLetterList.add(new EmailDto(0,"sdghjk","wertzuio",d));
+		newsLetterList.add(new EmailDto(0,"sdgasdfhjk","wertzuio",d));
+		newsLetterList.add(new EmailDto(12,"sdgasdfhjk","asdfgio",d));
+		newsLetterList.add(new EmailDto(32,"k","adfghfgio",d));
+	}
 
 	@Override
 	public void add(EmailDto emaildto) {
@@ -39,6 +50,7 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	@Override
 	public List<EmailDto> getAllNewsLetter() {
+		init();
 		return newsLetterList;
 	}
 

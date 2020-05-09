@@ -1,6 +1,6 @@
 package NewsLetterEmail.Dto;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Random;
 
 import javax.persistence.GeneratedValue;
@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import NewsLetterEmail.ModelLogicEmail.EmailModel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
+@Builder
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmailDto {
@@ -69,12 +72,15 @@ public class EmailDto {
 		super();
 	}*/
 
-	public EmailDto(long id,String emailSubject, String emailMessage, Date emailDate) {
+	public EmailDto(int id,String emailSubject, String emailMessage, Date d) {
 		this.id = id;
 		this.emailSubject = emailSubject;
 		this.emailMessage = emailMessage;
-		this.emailDate = emailDate;
+		this.emailDate = d;
 	}
+
+
+
 
 
 	

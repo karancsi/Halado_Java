@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,28 +31,33 @@ public class EmailController {
 	private NewsLetterRepo r;
 
 	public Date d = new Date(2020, 10, 10);
-	private EmailDto proba = new EmailDto((long)1, "hirlevél","asdfdgfhjkl",d);
-	private List<NewsLetterRepo> letters = new ArrayList<NewsLetterRepo>();
+	//private EmailDto proba = new EmailDto(1, "hirlevél","asdfdgfhjkl",d);
 	
 
+	@Autowired
 	public void setEDto(EmailDto ed) {
 		this.ed = ed;
 	}
 
+	@Autowired
 	public void setNewsLSer(NewsLetterSer ser) {
 		this.ser = ser;
 	}
 	
+	private List<EmailDto> letters = ser.getAllNewsLetter();
+	
 
 	@GetMapping(value="/")
-	public String showIndex(Model m){
-	//	letters.add(proba);
-		m.addAttribute("letters", letters);
+	public ModelAndView showIndex(){
+		//letters.add(proba);
+		ModelAndView mav =  new ModelAndView();
+		mav.setViewName("index");
+		mav.addObject("letters", letters);
 		//log.info("index");
-	//	ModelAndView mav =  new ModelAndView();
-	//	mav.addObject("ed", new EmailDto());
 		
-		return "index";
+	//mav.addObject("ed", new EmailDto());
+		
+		return mav;
 	}
 	
 	@GetMapping(value= "/emailForm")
@@ -67,7 +73,7 @@ public class EmailController {
 	
 	@GetMapping(value="/addNewsLetter")
 	public ModelAndView showAddPage(){
-		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto((long)2,"sdfdg","sdfgh",d));
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto(2,"sdfdg","sdfgh",d));
 	}
 	
 	
@@ -78,8 +84,8 @@ public class EmailController {
 	public String add(@Valid EmailDto emailDto) {
 		
 		System.out.println(emailDto.getEmailMessage());
-		//ser.add(emailDto);
-		r.add(emailDto);
+		ser.add(emailDto);
+	//	r.add(emailDto);
 	//	ser.add(ed);
 		
 	/*	EmailDto ed = new EmailDto(id, emailSubject, emailMessage, emailDate);

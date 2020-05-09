@@ -10,6 +10,7 @@ import NewsLetterEmail.Dto.EmailDto;
 import NewsLetterRepository.NewsLetterRepo;
 
 @Service
+
 public class NewsLetterSer implements INewsLetterSer {
 
 	private NewsLetterRepo nlr ;

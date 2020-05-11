@@ -2,21 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update Newsletter</title>
 </head>
 <body>
-<form action="#" th:action="@{/addNewsLetter}" method="post" th:object = "${ed}">
+<form action="#" th:action="@{/update}" method="post" th:object = "${ed}">
 id
- <input type="number" id="id" th:field="*{id}" value="0"/>
+ <input type="number" id="id" th:field="*{id}"/>
 Subject
- <input type="text" id="emailSubject" th:field="*{emailSubject}" value= "asd" />
+ <input type="text" id="emailSubject" th:field="*{emailSubject}" />
  Message
  <input type="text" id="emailMessage" th:field="*{emailMessage}" />
  Date
  <input type="date" id="emailDate" name="emailDate" value="1994-01-01"
        min="2020-01-01" max="2020-12-31" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/>
        
- <button type="submit" name="action" >Add</button>
+ <button type="submit" name="action" >Save</button>
  
  <p>
  <a href="/">Kezdőoldal</a>

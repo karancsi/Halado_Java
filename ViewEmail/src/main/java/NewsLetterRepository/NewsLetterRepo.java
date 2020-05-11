@@ -31,7 +31,10 @@ public class NewsLetterRepo implements INewsLetterRep {
 	//módosítás mentése
 	@Override
 	public void save(EmailDto emaildto) {
-		//meghagytam másnak :D mert ilyen jófej vagyok
+		int index = newsLetterList.indexOf(emaildto);
+	//....
+
+		newsLetterList.set(index, emaildto);
 	}
 
 	@Override

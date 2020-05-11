@@ -42,10 +42,11 @@ padding: 15px 15px 15px;
 		<span th:text="${letter.emailMessage}"></span> Dátum:
 		<span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span>
 		
-        
-        <button type="submit" name="delete"> Törlés</button>
-        <button type="submit"> Módosítás</button> </li>
+		<a th:href="@{delete(id=${letter.id})}">Törlés</a>
+		<a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
+	
     </ol>
+    
  <p>
  <a href="/">Kezdőoldal</a>
  </p>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -68,7 +69,7 @@ public class EmailController {
 	
 	@GetMapping(value="/addNewsLetter")
 	public ModelAndView showAddPage(){
-		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto(0,"tárgy","üznet",d));
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto(0, "tárgy", "üzenet", d));
 	}
 	
 	
@@ -78,12 +79,25 @@ public class EmailController {
 		return "redirect:/emailList";
 	}
 	
-	@PostMapping(value = "/emailList") 
-	public ModelAndView delete(@RequestParam(name = "delete") EmailDto emaildto) {
-		ser.delete(emaildto.getId());
-		return showEmailForm();
+	
+	@RequestMapping(value="/delete")
+	public String delete(@RequestParam int id) {
+		ser.delete(id);
+		return "redirect:/emailList";
 	}
 	
+	@GetMapping(value="/update")
+	public ModelAndView showUpdate(@Valid EmailDto emaildto) {
+		
+		return new ModelAndView("updateNewsLetter").addObject("ed", emaildto);
+	}
+	
+	@PostMapping(value="/update")
+	public String update(@Valid EmailDto emailDto) {
+		System.out.println(emailDto.toString());
+		ser.save(emailDto);
+		return "redirect:/emailList";
+	}
 	
 	
 

@@ -74,11 +74,6 @@ public class EmailDto {
 		this.emailDate = emailDate;
 	}
 
-	
-	/*public EmailDto() {
-		super();
-	}*/
-
 	public EmailDto(int id,String emailSubject, String emailMessage, Date d) {
 		this.id = id;
 		this.emailSubject = emailSubject;
@@ -87,9 +82,4 @@ public class EmailDto {
 		
 	}
 
-
-
-
-
-	
 }

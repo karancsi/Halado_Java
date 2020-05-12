@@ -11,9 +11,5 @@ import NewsLetterEmail.ModelLogicEmail.EmailModel;
 @Configuration
 public class DependencyConfig {
 
-	@Bean
-	public EmailDto emaildto() {
-		return new EmailDto(321,"sdfgh","ertzuiop",new Date());
-	}
 
 }

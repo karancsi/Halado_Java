@@ -34,6 +34,8 @@ public class EmailController {
 	private NewsLetterSer ser = new NewsLetterSer(r);
 
 	public Date d = new Date(2020-10-10);
+	
+	int index = 0;
 
 
 /*	@Autowired
@@ -87,18 +89,27 @@ public class EmailController {
 	}
 	
 	@GetMapping(value="/update")
-	public ModelAndView showUpdate(@Valid EmailDto emaildto) {
-		
+	public ModelAndView showUpdate(@Valid EmailDto emaildto)/*régi*/ {
+		index = (int)emaildto.getId();
+		//index = letters.size();
+		System.out.println(index+ "ez a getmappingben");
 		return new ModelAndView("updateNewsLetter").addObject("ed", emaildto);
 	}
 	
-	@PostMapping(value="/update")
+	/*@PostMapping(value="/update")
 	public String update(@Valid EmailDto emailDto) {
-		System.out.println(emailDto.toString());
+		System.out.println(emailDto.getEmailSubject() + " én irtam\t" + emailDto.getEmailMessage());
 		ser.save(emailDto);
 		return "redirect:/emailList";
+	}*/
+	
+	@PostMapping(value = "/update")
+	public ModelAndView update(@Valid EmailDto emailDto) {//új
+		System.out.println(index + "a postmappingben");
+		//System.out.println(emailDto.getEmailSubject() + " én irtam\t" + emailDto.getEmailMessage());
+		ser.save(emailDto);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
 	}
-	
-	
-
 }

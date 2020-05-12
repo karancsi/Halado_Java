@@ -18,9 +18,9 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	@PostConstruct
 	public void init() {
-		newsLetterList.add(new EmailDto(0,"sdgasdfhjk","wertzuio",d));
-		newsLetterList.add(new EmailDto(12,"sdgasdfhjk","asdfgio",d));
-		newsLetterList.add(new EmailDto(32,"k","adfghfgio",d));
+		newsLetterList.add(new EmailDto(1,"Aktualitások a ME életéről","COVID_19",d));
+		newsLetterList.add(new EmailDto(2,"Új hozzászólás a Halado-java Classroom-ban","Ma lesz óra?",d));
+		newsLetterList.add(new EmailDto(3,"Sportdélutánok","Új időpontok a atavaszi félévben",d));
 	}
 
 	@Override

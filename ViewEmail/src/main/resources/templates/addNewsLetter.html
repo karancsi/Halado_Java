@@ -13,8 +13,8 @@ Subject
  Message
  <input type="text" id="emailMessage" th:field="*{emailMessage}" />
  Date
- <input type="date" id="emailDate" name="emailDate" value="1994-01-01"
-       min="2020-01-01" max="2020-12-31" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/>
+ <input type="date" id="emailDate" name="emailDate" 
+        th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/>
        
  <button type="submit" name="action" >Add</button>
  

@@ -1,6 +1,7 @@
 package NewsLetterService;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,12 +32,13 @@ public class NewsLetterSer implements INewsLetterSer {
 	}
 
 	@Override
-	public void save(EmailDto emaildto) {
-		nlr.save(emaildto);
+	public void save(EmailDto emaildto,UUID id) {
+		nlr.save(emaildto,id);
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(UUID id) {
+		System.out.println(id + "ssdfffff");
 		nlr.delete(id);
 		
 	}

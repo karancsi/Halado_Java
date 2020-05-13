@@ -3,6 +3,7 @@ package NewsLetterRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 
@@ -15,12 +16,13 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	List<EmailDto> newsLetterList = new ArrayList<>();
 	Date d = new Date();
+	int index = 0;
 
 	@PostConstruct
 	public void init() {
-		newsLetterList.add(new EmailDto(1,"Aktualitások a ME életéről","COVID_19",d));
-		newsLetterList.add(new EmailDto(2,"Új hozzászólás a Halado-java Classroom-ban","Ma lesz óra?",d));
-		newsLetterList.add(new EmailDto(3,"Sportdélutánok","Új időpontok a atavaszi félévben",d));
+		newsLetterList.add(new EmailDto("Aktualitások a ME életéről","COVID_19",d));
+		newsLetterList.add(new EmailDto("Új hozzászólás a Halado-java Classroom-ban","Ma lesz óra?",d));
+		newsLetterList.add(new EmailDto("Sportdélutánok","Új időpontok a atavaszi félévben",d));
 	}
 
 	@Override
@@ -30,22 +32,45 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	//módosítás mentése
 	@Override
-	public void save(EmailDto emaildto) {
-		int index = newsLetterList.indexOf(emaildto);
-	//....
-
+	public void save(EmailDto emaildto, UUID id) {
+		UUID valami = id;
+		System.out.println("könyvtárrandi" + id);
+	
+		
+		for (EmailDto emailDto2 : newsLetterList) {
+			System.out.println(emailDto2.getId());
+		}
+		UUID v ;
+		for (int i = 0; i < newsLetterList.size(); i++) {
+			if ((v=newsLetterList.get(i).getId()) == valami) {
+				System.out.println(newsLetterList.get(i).getId().toString() + "valamiiii");
+				index = newsLetterList.indexOf(emaildto);
+			}
+		}
+	System.out.println("megkapja vajon????" + index);
+		
+		
 		newsLetterList.set(index, emaildto);
 	}
-
+	
+	
 	@Override
-	public void delete(long id) {
+	public void delete(UUID id) {
+	int index = 0;
+		for (EmailDto emailDto : newsLetterList) {
+			if (id == emailDto.getId()) {
+				index =newsLetterList.indexOf(emailDto);
+				System.out.println(index + "asd és lfsz");
+			}
+		}
+		newsLetterList.remove(index);
 		
-		newsLetterList.remove(newsLetterList.stream().filter(n -> n.getId() == id).findFirst().get());
+		
 		
 	}
 
 	@Override
-	public EmailDto getById(long id) {
+	public EmailDto getById(UUID id) {
 		EmailDto ed = newsLetterList.stream().filter(n -> n.getId() == id).findFirst().get();
 		return ed;
 	}

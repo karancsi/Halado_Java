@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,9 +31,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EmailDto {
 	
-	@Id
+	/*@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private long id;*/
 	
 	private String emailSubject;
 	
@@ -40,13 +41,15 @@ public class EmailDto {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date emailDate;
+	
+	private UUID id;
 
 	
-	public long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -74,8 +77,8 @@ public class EmailDto {
 		this.emailDate = emailDate;
 	}
 
-	public EmailDto(int id,String emailSubject, String emailMessage, Date d) {
-		this.id = id;
+	public EmailDto(String emailSubject, String emailMessage, Date d) {
+		this.id = UUID.randomUUID();
 		this.emailSubject = emailSubject;
 		this.emailMessage = emailMessage;
 		this.emailDate = d;

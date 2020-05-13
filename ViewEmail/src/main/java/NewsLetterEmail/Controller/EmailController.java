@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -35,7 +36,7 @@ public class EmailController {
 
 	public Date d = new Date(2020-10-10);
 	
-	int index = 0;
+	UUID index;
 
 
 /*	@Autowired
@@ -71,7 +72,7 @@ public class EmailController {
 	
 	@GetMapping(value="/addNewsLetter")
 	public ModelAndView showAddPage(){
-		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto(0, "tárgy", "üzenet", d));
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto( "tárgy", "üzenet", d));
 	}
 	
 	
@@ -83,16 +84,16 @@ public class EmailController {
 	
 	
 	@RequestMapping(value="/delete")
-	public String delete(@RequestParam int id) {
+	public String delete(@RequestParam UUID id) {
+		System.out.println(id);
 		ser.delete(id);
 		return "redirect:/emailList";
 	}
 	
 	@GetMapping(value="/update")
 	public ModelAndView showUpdate(@Valid EmailDto emaildto)/*régi*/ {
-		index = (int)emaildto.getId();
-		//index = letters.size();
-		System.out.println(index+ "ez a getmappingben");
+		index = emaildto.getId();
+		System.out.println(index+ "   ez a getmappingben");
 		return new ModelAndView("updateNewsLetter").addObject("ed", emaildto);
 	}
 	
@@ -105,9 +106,9 @@ public class EmailController {
 	
 	@PostMapping(value = "/update")
 	public ModelAndView update(@Valid EmailDto emailDto) {//új
-		System.out.println(index + "a postmappingben");
+		System.out.println(index + " a postmappingben");
 		//System.out.println(emailDto.getEmailSubject() + " én irtam\t" + emailDto.getEmailMessage());
-		ser.save(emailDto);
+		ser.save(emailDto, index);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
 		return mav;

@@ -40,11 +40,11 @@ public class NewsLetterRepo implements INewsLetterRep {
 		for (EmailDto emailDto2 : newsLetterList) {
 			System.out.println(emailDto2.getId());
 		}
-		UUID v ;
+		
 		for (int i = 0; i < newsLetterList.size(); i++) {
-			if ((v=newsLetterList.get(i).getId()) == valami) {
+			if (newsLetterList.get(i).getId().equals(valami)) {
 				System.out.println(newsLetterList.get(i).getId().toString() + "valamiiii");
-				index = newsLetterList.indexOf(emaildto);
+				index = i;
 			}
 		}
 	System.out.println("megkapja vajon????" + index);

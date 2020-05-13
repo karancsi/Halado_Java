@@ -1,12 +1,11 @@
- <!DOCTYPE html>
-
-
-
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<style>
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
+  
+  <style>
 body {
-  background-color: #9e5978;
+  background-image: url('back2.png');
+  
+
 }
 
 h1 {
@@ -27,28 +26,24 @@ font-size: 15px;
 width:200px;
 padding: 15px 15px 15px;
 }
-</style>
-<meta charset="UTF-8">
-<title>Unicorn's newsletters</title>
+  </style>
+  
+  <meta charset="UTF-8">
+  <title>Unicorn's newsletters</title>
 
-</head>
-<body>
-<p text-align="center">Ez az app az unikornisok által írt hírlevelek listázására, azok módosítsára és törlésére szolgál.</p>
+  
+</head><body>
+<h1><span style="color: black;">Aktuális hírfolyam:</span><span style="color: rgb(19, 0, 0);"><br>
+</span></h1>
 
 <ol>
-        <li th:each="letter : ${letters}" >
-        <span th:text="${letter.id}"></span> Tárgy:
-        <span th:text="${letter.emailSubject}"></span> Üzenet:
-		<span th:text="${letter.emailMessage}"></span> Dátum:
-		<span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span>
-		
-		<a th:href="@{delete(id=${letter.id})}">Törlés</a>
-		<a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
-	
-    </ol>
-    
- <p>
- <a href="/">Kezdőoldal</a>
- </p>
-</body>
-</html>
+
+  <li th:each="letter : ${letters}"> <span th:text="${letter.id}"></span>
+Tárgy: <span th:text="${letter.emailSubject}"></span> Üzenet: <span th:text="${letter.emailMessage}"></span> Dátum: <span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span> <a th:href="@{delete(id=${letter.id})}">Törlés</a> <a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
+  </li>
+</ol>
+
+<div style="text-align: center;"> <a href="/">Vissza a kezdőoldalra</a></div>
+<p> </p>
+
+</body></html>

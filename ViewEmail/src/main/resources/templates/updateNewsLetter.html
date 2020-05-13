@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Update Newsletter</title>
-</head>
-<body>
-<form action="#" th:action="@{/update}" method="post" th:object = "${ed}">
+<html xmlns:th="http://www.thymeleaf.org"><head>
+  
+  <meta charset="UTF-8">
+  <title>Update Newsletter</title>
 
-Subject
- <input type="text" id="emailSubject" th:field="*{emailSubject}" />
- Message
- <input type="text" id="emailMessage" th:field="*{emailMessage}" />
- Date
- <input type="date" id="emailDate" name="emailDate"
-        th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}"/>
-       
- <button type="submit" name="action" >Save</button>
- 
- <p>
- <a href="/">Kezdőoldal</a>
+  
+  
+  <style>
+body {
+  background-image: url('background.jpg');
+}
+  </style>
+</head><body>
+<form action="#" th:action="@{/update}" method="post" th:object="${ed}">
+  <div style="text-align: center; font-weight: bold;">
+  <h1>Hírlevél módosítás</h1>
+  </div>
+  <br>
+  <span style="font-weight: bold;">Tárgy:</span> <input id="emailSubject" th:field="*{emailSubject}" type="text">
+  <span style="font-weight: bold;">Üzenet:</span> <input id="emailMessage" th:field="*{emailMessage}" type="text">
+  <span style="font-weight: bold;">Dátum:</span> <input id="emailDate" name="emailDate" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}" type="date"> <button type="submit" name="action">Mentés</button>
+  
+  <p><br>
  </p>
+  <div style="text-align: center;"><a href="file:///">Vissza a főoldalra</a></div>
+  <p> </p>
 
 </form>
-</body>
-</html>
 
-
+</body></html>

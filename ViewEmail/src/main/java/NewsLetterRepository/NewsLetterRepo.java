@@ -47,6 +47,7 @@ public class NewsLetterRepo implements INewsLetterRep {
 				index = i;
 			}
 		}
+		
 	System.out.println("megkapja vajon????" + index);
 		
 		

@@ -38,7 +38,9 @@ padding: 15px 15px 15px;
 <ol>
 
   <li th:each="letter : ${letters}"> <span th:text="${letter.id}"></span>
-Tárgy: <span th:text="${letter.emailSubject}"></span> Üzenet: <span th:text="${letter.emailMessage}"></span> Dátum: <span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span> <a th:href="@{delete(id=${letter.id})}">Törlés</a> <a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
+Tárgy: <span th:text="${letter.emailSubject}"></span> Üzenet: <span th:text="${letter.emailMessage}"></span> 
+Dátum: <span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span> <a th:href="@{delete(id=${letter.id})}">Törlés</a> 
+<a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
   </li>
 </ol>
 

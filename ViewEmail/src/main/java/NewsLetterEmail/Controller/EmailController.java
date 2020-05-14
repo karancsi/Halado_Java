@@ -1,4 +1,5 @@
 package NewsLetterEmail.Controller;
+
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -27,87 +28,71 @@ import NewsLetterService.NewsLetterSer;
 public class EmailController {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(EmailController.class);
 
-	
 	private EmailDto ed;
-	
+
 	private NewsLetterRepo r = new NewsLetterRepo();
-	
+
 	private NewsLetterSer ser = new NewsLetterSer(r);
 
-	public Date d = new Date(2020-10-10);
-	
+	public Date d = new Date(2020 - 10 - 10);
+
 	UUID index;
 
-
-/*	@Autowired
-	public void setEDto(EmailDto ed) {
-		this.ed = ed;
-	}
-
-	@Autowired
-	public void setNewsLSer(NewsLetterSer ser) {
-		this.ser = ser;
-	}
-*/	
+	/*
+	 * @Autowired public void setEDto(EmailDto ed) { this.ed = ed; }
+	 * 
+	 * @Autowired public void setNewsLSer(NewsLetterSer ser) { this.ser = ser; }
+	 */
 	private List<EmailDto> letters = ser.getAllNewsLetter();
-	
 
-	@GetMapping(value="/")
-	public ModelAndView showIndex(){	
-		ModelAndView mav =  new ModelAndView();
+	@GetMapping(value = "/")
+	public ModelAndView showIndex() {
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
 		mav.addObject("letters", letters);
-		
+
 		return mav;
 	}
-	
-	@GetMapping(value= "/emailList")
+
+	@GetMapping(value = "/emailList")
 	public ModelAndView showEmailForm() {
-		ModelAndView mav =  new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("emailList");
 		mav.addObject("letters", letters);
-		
+
 		return mav;
 	}
-	
-	@GetMapping(value="/addNewsLetter")
-	public ModelAndView showAddPage(){
-		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto( "tárgy", "üzenet", d));
+
+	@GetMapping(value = "/addNewsLetter")
+	public ModelAndView showAddPage() {
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto("tárgy", "üzenet", d));
 	}
-	
-	
-	@PostMapping(value = "/addNewsLetter") 
+
+	@PostMapping(value = "/addNewsLetter")
 	public String add(@Valid EmailDto emailDto) {
 		ser.add(emailDto);
 		return "redirect:/emailList";
 	}
-	
-	
-	@RequestMapping(value="/delete")
-	public String delete(@RequestParam UUID id) {
-		System.out.println(id);
+
+	@RequestMapping(value = "/delete")
+	public ModelAndView delete(@RequestParam UUID id) {
+		System.out.println("delete-ben az id: " + id);
 		ser.delete(id);
-		return "redirect:/emailList";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/emailList");
+		return mav;
 	}
-	
-	@GetMapping(value="/update")
-	public ModelAndView showUpdate(@Valid EmailDto emaildto)/*régi*/ {
+
+	@GetMapping(value = "/update")
+	public ModelAndView showUpdate(@Valid EmailDto emaildto) {
 		index = emaildto.getId();
-		System.out.println(index+ "   ez a getmappingben");
+		System.out.println(index + "   ez a getmappingben");
 		return new ModelAndView("updateNewsLetter").addObject("ed", emaildto);
 	}
-	
-	/*@PostMapping(value="/update")
-	public String update(@Valid EmailDto emailDto) {
-		System.out.println(emailDto.getEmailSubject() + " én irtam\t" + emailDto.getEmailMessage());
-		ser.save(emailDto);
-		return "redirect:/emailList";
-	}*/
-	
+
 	@PostMapping(value = "/update")
-	public ModelAndView update(@Valid EmailDto emailDto) {//új
+	public ModelAndView update(@Valid EmailDto emailDto) {
 		System.out.println(index + " a postmappingben");
-		//System.out.println(emailDto.getEmailSubject() + " én irtam\t" + emailDto.getEmailMessage());
 		ser.save(emailDto, index);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");

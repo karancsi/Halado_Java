@@ -32,13 +32,12 @@ public class NewsLetterSer implements INewsLetterSer {
 	}
 
 	@Override
-	public void save(EmailDto emaildto,UUID id) {
+	public void save(EmailDto emaildto, UUID id) {
 		nlr.save(emaildto,id);
 	}
 
 	@Override
 	public void delete(UUID id) {
-		System.out.println(id + "ssdfffff");
 		nlr.delete(id);
 		
 	}

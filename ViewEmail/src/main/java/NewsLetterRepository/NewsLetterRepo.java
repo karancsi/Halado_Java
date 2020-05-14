@@ -51,7 +51,6 @@ public class NewsLetterRepo implements INewsLetterRep {
 			}
 		}
 		newsLetterList.remove(index);
-
 	}
 
 	@Override

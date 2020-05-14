@@ -25,6 +25,9 @@ font-size: 15px;
 width:200px;
 padding: 15px 15px 15px;
 }
+.mytable{
+align="center" width="300" height="30"
+}
   </style>
   
   <meta charset="UTF-8">
@@ -35,16 +38,27 @@ padding: 15px 15px 15px;
 <h1><span style="color: black;">Aktuális hírfolyam:</span><span style="color: rgb(19, 0, 0);"><br>
 </span></h1>
 
-<ol>
+<table border="2" style="width:100%">
+<tr>
+	<th align="center" width="300" height="30">ID: </th>
+	<th align="center" width="200" height="30">Tárgy: </th>
+	<th align="center" width="200" height="30">Üzenet: </th>
+	<th align="center" width="200" height="30">Dátum: </th>
+	<th align="center" width="100" height="30">Törlés </th>
+	<th align="center" width="100" height="30">Módosítás </th>
+</tr>
+<table border="2" style="width:100%" th:each="letter : ${letters}">
+<tr>
+<td  align="center" width="300" height="30"> <span th:text="${letter.id}"></td>
+<td  align="center" width="200" height="30"> <span th:text="${letter.emailSubject}"></td>
+<td  align="center" width="200" height="30"> <span th:text="${letter.emailMessage}"> </td>
+<td  align="center" width="200" height="30"> <span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></td>
+<td  align="center" width="100" height="30"> <a th:href="@{delete(id=${letter.id})}">Törlés</a> </td>
+<td  align="center" width="100" height="30"> <a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a></td>
+</tr>
+</table>
 
-  <li th:each="letter : ${letters}"> <span th:text="${letter.id}"></span>
-Tárgy: <span th:text="${letter.emailSubject}"></span> Üzenet: <span th:text="${letter.emailMessage}"></span> 
-Dátum: <span th:text="${#dates.format(letter.emailDate, 'yyyy-MM-dd')}"></span> <a th:href="@{delete(id=${letter.id})}">Törlés</a> 
-<a th:href="@{update(id=${letter.id}, emailSubject=${letter.emailSubject}, emailMessage=${letter.EmailMessage}, emailDate=${#dates.format(letter.emailDate, 'yyyy-MM-dd')})}">Módosítás</a>
-  </li>
-</ol>
-
-<div style="text-align: center;"> <a href="/">Vissza a kezdőoldalra</a></div>
+<br><div style="text-align: center;"> <a href="/">Vissza a kezdőoldalra</a></div>
 <p> </p>
 
 </body></html>

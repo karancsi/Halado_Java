@@ -11,16 +11,32 @@ body {
   background-image: url('background.jpg');
   background-color:#80ab83;
 }
+
+.fieldError {
+            background-color: red;
+        }
+ 
   </style>
 </head><body>
-<form action="#" th:action="@{/addNewsLetter}" method="post" th:object="${ed}">
+<form align="center" action="#" th:action="@{/addNewsLetter}" method="post" th:object="${ed}">
   <div style="text-align: center;">
   </div>
   <h1 style="text-align: center;"><span style="font-weight: bold;">Új hírlevél felvitel<br>
   </span></h1>
 
   <br><span style="font-weight: bold;">
-Tárgy:</span> <input id="emailSubject" th:field="*{emailSubject}" value="" type="text"> <span style="font-weight: bold;">Üzenet:</span> <input id="emailMessage" th:field="*{emailMessage}" type="text"> <span style="font-weight: bold;">Dátum:</span> <input id="emailDate" name="emailDate" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}" type="date"> <button type="submit" name="action">Hozzáad</button>
+Tárgy:</span><br>
+ <input id="emailSubject" th:field="*{emailSubject}" value="" type="text" th:class="${#fields.hasErrors('emailSubject')} ? fieldError"/>
+	<ul>
+        <li th:each="err : ${#fields.errors('emailSubject')}" />
+         <span th:text="${err}"></span> 
+    </ul>
+
+  <span style="font-weight: bold;">Üzenet:</span> <br>
+  <input id="emailMessage" th:field="*{emailMessage}" type="text"><br><p></p>
+   <span style="font-weight: bold;">Dátum:</span> <br>
+   <input id="emailDate" name="emailDate" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}" type="date"> <br><p></p>
+   <br><button type="submit"  name="action">Hozzáad</button><br>
   <p> <br>
   </p>
   

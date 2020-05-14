@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -67,9 +68,18 @@ public class EmailController {
 	public ModelAndView showAddPage() {
 		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto("tárgy", "üzenet", d));
 	}
+	
+	@GetMapping(value = "/NLerror")
+	public ModelAndView showErrorPage() {
+		return new ModelAndView("NLerror");
+	}
 
 	@PostMapping(value = "/addNewsLetter")
-	public String add(@Valid EmailDto emailDto) {
+	public String add(@Valid EmailDto emailDto, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+		return "redirect:/NLerror";
+		}
+		
 		ser.add(emailDto);
 		return "redirect:/emailList";
 	}
@@ -82,7 +92,6 @@ public class EmailController {
 		mav.setViewName("redirect:/emailList");
 		return mav;
 	}
-
 	@GetMapping(value = "/update")
 	public ModelAndView showUpdate(@Valid EmailDto emaildto) {
 		index = emaildto.getId();
@@ -93,9 +102,10 @@ public class EmailController {
 	@PostMapping(value = "/update")
 	public ModelAndView update(@Valid EmailDto emailDto) {
 		System.out.println(index + " a postmappingben");
-		ser.save(emailDto, index);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/");
+		ser.save(emailDto, index);
+		mav.setViewName("redirect:/emailList");	
+	
 		return mav;
 	}
 }

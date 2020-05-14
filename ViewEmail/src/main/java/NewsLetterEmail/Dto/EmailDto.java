@@ -9,9 +9,11 @@ import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,6 +37,8 @@ public class EmailDto {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;*/
 	
+	@Size(min=3)
+	@Column(nullable = false)
 	private String emailSubject;
 	
 	private String emailMessage;

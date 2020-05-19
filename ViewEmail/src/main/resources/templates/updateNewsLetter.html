@@ -17,13 +17,13 @@ body {
   <h1>Hírlevél módosítás</h1>
   </div>
   <br>
-  <span style="font-weight: bold;">Tárgy:</span> <input id="emailSubject" th:field="*{emailSubject}" type="text">
-  <span style="font-weight: bold;">Üzenet:</span> <input id="emailMessage" th:field="*{emailMessage}" type="text">
+  <span style="font-weight: bold;">Tárgy:</span> <input style="width: 200px;" id="emailSubject" th:field="*{emailSubject}" type="text">
+  <span style="font-weight: bold;">Üzenet:</span> <input style="width: 300px;" id="emailMessage" th:field="*{emailMessage}" type="text">
   <span style="font-weight: bold;">Dátum:</span> <input id="emailDate" name="emailDate" th:value="${#dates.format(emailDate, 'yyyy-MM-dd')}" type="date"> <button type="submit" name="action">Mentés</button>
   
   <p><br>
  </p>
-  <div style="text-align: center;"><a href="file:///">Vissza a főoldalra</a></div>
+  <div style="text-align: center;"><a href="/">Vissza a főoldalra</a></div>
   <p> </p>
 
 </form>

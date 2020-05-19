@@ -11,36 +11,33 @@ import NewsLetterRepository.NewsLetterRepo;
 @Service
 public class NewsLetterSer implements INewsLetterSer {
 
-	private NewsLetterRepo nlr ;
+	private NewsLetterRepo newsLetterRepo ;
 	
 	public NewsLetterSer(NewsLetterRepo newsLetterRepo) {
-		this.nlr = newsLetterRepo;
+		this.newsLetterRepo = newsLetterRepo;
 	}
 	
-	public void setRepo (NewsLetterRepo newsLetterRepo)
-	{
-		this.nlr = newsLetterRepo;
-	}
+
 
 	@Override
 	public void add(EmailDto emaildto) {
-		nlr.add(emaildto);
+		newsLetterRepo.add(emaildto);
 	}
 
 	@Override
 	public void save(EmailDto emaildto, UUID id) {
-		nlr.save(emaildto,id);
+		newsLetterRepo.save(emaildto,id);
 	}
 
 	@Override
 	public void delete(UUID id) {
-		nlr.delete(id);
+		newsLetterRepo.delete(id);
 		
 	}
 
 	@Override
 	public List<EmailDto> getAllNewsLetter() {
-		return nlr.getAllNewsLetter();
+		return newsLetterRepo.getAllNewsLetter();
 	}
 	
 	

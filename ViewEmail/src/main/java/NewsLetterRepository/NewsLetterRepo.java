@@ -15,14 +15,14 @@ import NewsLetterEmail.Dto.EmailDto;
 public class NewsLetterRepo implements INewsLetterRep {
 
 	List<EmailDto> newsLetterList = new ArrayList<>();
-	Date d = new Date();
+	Date date = new Date();
 	int index = 0;
 
 	@PostConstruct
 	public void init() {
-		newsLetterList.add(new EmailDto("Aktualitások a ME életéről", "COVID_19", d));
-		newsLetterList.add(new EmailDto("Új hozzászólás a Halado-java Classroom-ban", "Ma lesz óra?", d));
-		newsLetterList.add(new EmailDto("Sportdélutánok", "Új időpontok a atavaszi félévben", d));
+		newsLetterList.add(new EmailDto("Aktualitások a ME életéről", "COVID_19", date));
+		newsLetterList.add(new EmailDto("Új hozzászólás a Halado-java Classroom-ban", "Ma lesz óra?", date));
+		newsLetterList.add(new EmailDto("Sportdélutánok", "Új időpontok a atavaszi félévben", date));
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	@Override
 	public EmailDto getById(UUID id) {
-		EmailDto ed = newsLetterList.stream().filter(n -> n.getId() == id).findFirst().get();
-		return ed;
+		EmailDto emailDto = newsLetterList.stream().filter(n -> n.getId() == id).findFirst().get();
+		return emailDto;
 	}
 
 	@Override

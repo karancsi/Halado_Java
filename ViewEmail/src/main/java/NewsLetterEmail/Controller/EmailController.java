@@ -22,15 +22,15 @@ import NewsLetterService.NewsLetterSer;
 
 public class EmailController {
 	
-	private NewsLetterRepo r = new NewsLetterRepo();
+	private NewsLetterRepo newsLetterRepo = new NewsLetterRepo();
 
-	private NewsLetterSer ser = new NewsLetterSer(r);
+	private NewsLetterSer newsLetterService = new NewsLetterSer(newsLetterRepo);
 
-	public Date d = new Date(2020 - 10 - 10);
+	public Date date = new Date(2020 - 10 - 10);
 
 	UUID index;
 
-	private List<EmailDto> letters = ser.getAllNewsLetter();
+	private List<EmailDto> letters = newsLetterService.getAllNewsLetter();
 
 	@GetMapping(value = "/")
 	public ModelAndView showIndex() {
@@ -51,7 +51,7 @@ public class EmailController {
 
 	@GetMapping(value = "/addNewsLetter")
 	public ModelAndView showAddPage() {
-		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto("tárgy", "üzenet", d));
+		return new ModelAndView("addNewsLetter").addObject("ed", new EmailDto("tárgy", "üzenet", date));
 	}
 	
 	@GetMapping(value = "/NLerror")
@@ -65,13 +65,13 @@ public class EmailController {
 		return "redirect:/NLerror";
 		}
 		
-		ser.add(emailDto);
+		newsLetterService.add(emailDto);
 		return "redirect:/emailList";
 	}
 
 	@RequestMapping(value = "/delete")
 	public ModelAndView delete(@RequestParam UUID id) {
-		ser.delete(id);
+		newsLetterService.delete(id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/emailList");
 		return mav;
@@ -84,9 +84,8 @@ public class EmailController {
 
 	@PostMapping(value = "/update")
 	public ModelAndView update(@Valid EmailDto emailDto) {
-		System.out.println(index + " a postmappingben");
 		ModelAndView mav = new ModelAndView();
-		ser.save(emailDto, index);
+		newsLetterService.save(emailDto, index);
 		mav.setViewName("redirect:/emailList");	
 	
 		return mav;

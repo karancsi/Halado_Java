@@ -100,5 +100,26 @@ class NewsLetterSerTest {
 		assertEquals(1, testlist.size());
 		verify(nlr, times(1)).getAllNewsLetter();
 	}
+	
+	@Test
+	public void testSort() {
+		init();
+		List<EmailDto> list = new ArrayList<EmailDto>();
+		Date date2 = new Date(2020-01-05);
+		EmailDto emailDto = new EmailDto("Aktualitások a ME életéről", "COVID_19", date2);
+		list.add(emailDto);
+		
+		EmailDto emailDto2 = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
+		list.add(emailDto2);
+
+		s.sort();
+		
+		assertEquals(0, list.indexOf(emailDto));
+		
+		
+		
+		
+		
+	}
 
 }

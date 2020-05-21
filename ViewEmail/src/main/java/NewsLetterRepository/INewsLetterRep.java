@@ -11,4 +11,5 @@ public interface INewsLetterRep {
 	void delete(UUID id);
 	EmailDto getById(UUID id);
 	List<EmailDto> getAllNewsLetter();
+	void sort();
 }

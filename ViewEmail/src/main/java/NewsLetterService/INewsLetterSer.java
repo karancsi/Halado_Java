@@ -10,5 +10,6 @@ public interface INewsLetterSer {
 	void save(EmailDto emaildto, UUID id);
 	void delete(UUID id);
 	List<EmailDto> getAllNewsLetter();
+	void sort();
 	
 }

@@ -43,11 +43,23 @@ public class EmailController {
 	@GetMapping(value = "/emailList")
 	public ModelAndView showEmailForm() {
 		ModelAndView mav = new ModelAndView();
+		newsLetterService.sort();
 		mav.setViewName("emailList");
 		mav.addObject("letters", letters);
 
 		return mav;
 	}
+	
+//	@PostMapping(value = "/emailList")
+//		public ModelAndView sortEmailByDate() {
+//			ModelAndView mav = new ModelAndView();
+//			newsLetterRepo.sort();
+//			mav.setViewName("emailList");
+//			mav.addObject("letters", letters);
+//			
+//			return mav;
+//		}
+	
 
 	@GetMapping(value = "/addNewsLetter")
 	public ModelAndView showAddPage() {
@@ -90,4 +102,5 @@ public class EmailController {
 	
 		return mav;
 	}
+	
 }

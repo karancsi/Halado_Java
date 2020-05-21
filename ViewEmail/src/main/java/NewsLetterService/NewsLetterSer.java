@@ -41,6 +41,14 @@ public class NewsLetterSer implements INewsLetterSer {
 	public List<EmailDto> getAllNewsLetter() {
 		return newsLetterRepo.getAllNewsLetter();
 	}
+
+
+
+	@Override
+	public void sort() {
+		newsLetterRepo.sort();
+		
+	}
 	
 	
 }

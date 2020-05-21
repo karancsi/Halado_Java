@@ -3,6 +3,7 @@ package NewsLetterService;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import NewsLetterEmail.Dto.EmailDto;
@@ -11,6 +12,7 @@ import NewsLetterRepository.NewsLetterRepo;
 @Service
 public class NewsLetterSer implements INewsLetterSer {
 
+	@Autowired
 	private NewsLetterRepo newsLetterRepo ;
 	
 	public NewsLetterSer(NewsLetterRepo newsLetterRepo) {

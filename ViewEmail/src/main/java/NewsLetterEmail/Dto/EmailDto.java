@@ -71,5 +71,9 @@ public class EmailDto {
 		this.emailDate = d;
 		
 	}
+	
+	public EmailDto() {
+		this.id = UUID.randomUUID();
+	}
 
 }

@@ -7,11 +7,11 @@ import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import NewsLetterEmail.Dto.EmailDto;
 
-@Component
+@Repository
 public class NewsLetterRepo implements INewsLetterRep {
 
 	List<EmailDto> newsLetterList = new ArrayList<>();

@@ -49,6 +49,13 @@ public class NewsLetterSer implements INewsLetterSer {
 		newsLetterRepo.sort();
 		
 	}
+
+
+
+	public void reverseSort() {
+		newsLetterRepo.reverseSort();
+		
+	}
 	
 	
 }

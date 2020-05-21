@@ -12,4 +12,5 @@ public interface INewsLetterRep {
 	EmailDto getById(UUID id);
 	List<EmailDto> getAllNewsLetter();
 	void sort();
+	void reverseSort();
 }

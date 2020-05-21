@@ -11,5 +11,6 @@ public interface INewsLetterSer {
 	void delete(UUID id);
 	List<EmailDto> getAllNewsLetter();
 	void sort();
+	void reverseSort();
 	
 }

@@ -115,11 +115,24 @@ class NewsLetterSerTest {
 		s.sort();
 		
 		assertEquals(0, list.indexOf(emailDto));
+	}
+	
+	@Test
+	public void testReverseSort() {
+		init();
+		List<EmailDto> list = new ArrayList<EmailDto>();
 		
+		EmailDto emailDtoFirst = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
+		list.add(emailDtoFirst);
 		
+		Date date2 = new Date(2020-01-05);
+		EmailDto emailDtoSecond = new EmailDto("Aktualitások a ME életéről", "COVID_19", date2);
+		list.add(emailDtoSecond);
 		
+
+		s.reverseSort();
 		
-		
+		assertEquals(1, list.indexOf(emailDtoSecond));
 	}
 
 }

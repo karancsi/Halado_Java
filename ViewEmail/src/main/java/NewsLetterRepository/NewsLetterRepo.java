@@ -79,6 +79,21 @@ public class NewsLetterRepo implements INewsLetterRep {
 		}
 
 	}
+
+	public void reverseSort() {
+		for (int i = newsLetterList.size()-1; i >0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (newsLetterList.get(j).getEmailDate().compareTo(newsLetterList.get(j+1).getEmailDate()) == -1) {
+					EmailDto emailseged = newsLetterList.get(j);
+					newsLetterList.set(j, newsLetterList.get(j+1));
+					newsLetterList.set(j+1, emailseged);	
+				}
+			}
+		}
+
+	}
+		
+	}
 	
 
-}
+

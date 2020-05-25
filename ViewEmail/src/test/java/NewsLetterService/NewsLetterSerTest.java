@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,10 +23,10 @@ import NewsLetterRepository.NewsLetterRepo;
 class NewsLetterSerTest {
 
 	@InjectMocks
-	NewsLetterSer s;
+	NewsLetterSer service;
 
 	@Mock
-	NewsLetterRepo nlr;
+	NewsLetterRepo repository;
 
 	Date date = new Date();
 	int index = 0;
@@ -45,9 +46,9 @@ class NewsLetterSerTest {
 		init();
 		EmailDto emailDto = new EmailDto("tárgy", "message", date);
 
-		s.add(emailDto);
+		service.add(emailDto);
 
-		verify(nlr, times(1)).add(emailDto);
+		verify(repository, times(1)).add(emailDto);
 
 	}
 
@@ -57,10 +58,10 @@ class NewsLetterSerTest {
 		EmailDto updatedemaildto = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
 		UUID uuid = updatedemaildto.getId();
 		updatedemaildto.setEmailMessage("A káromkodás rossz!");
-		when(nlr.getById(uuid)).thenReturn(updatedemaildto);
+		when(repository.getById(uuid)).thenReturn(updatedemaildto);
 
-		s.save(updatedemaildto, uuid);
-		assertEquals(nlr.getById(uuid).getEmailMessage(), updatedemaildto.getEmailMessage());
+		service.save(updatedemaildto, uuid);
+		assertEquals(repository.getById(uuid).getEmailMessage(), updatedemaildto.getEmailMessage());
 
 	}
 
@@ -69,8 +70,8 @@ class NewsLetterSerTest {
 		init();
 		EmailDto emaildto = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
 		UUID uuid = emaildto.getId();
-		s.delete(uuid);
-		assertEquals(null, nlr.getById(uuid));
+		service.delete(uuid);
+		assertEquals(null, repository.getById(uuid));
 
 	}
 
@@ -80,9 +81,9 @@ class NewsLetterSerTest {
 		EmailDto emaildto = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
 		UUID uuid = emaildto.getId();
 
-		when(nlr.getById(uuid)).thenReturn(emaildto);
+		when(repository.getById(uuid)).thenReturn(emaildto);
 
-		assertEquals(emaildto, nlr.getById(uuid));
+		assertEquals(emaildto, repository.getById(uuid));
 
 	}
 
@@ -94,11 +95,11 @@ class NewsLetterSerTest {
 		EmailDto emailDto = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
 		list.add(emailDto);
 
-		when(nlr.getAllNewsLetter()).thenReturn(list);
+		when(repository.getAllNewsLetter()).thenReturn(list);
 
-		List<EmailDto> testlist = s.getAllNewsLetter();
+		List<EmailDto> testlist = service.getAllNewsLetter();
 		assertEquals(1, testlist.size());
-		verify(nlr, times(1)).getAllNewsLetter();
+		verify(repository, times(1)).getAllNewsLetter();
 	}
 	
 	@Test
@@ -112,7 +113,7 @@ class NewsLetterSerTest {
 		EmailDto emailDto2 = new EmailDto("Aktualitások a ME életéről", "COVID_19", date);
 		list.add(emailDto2);
 
-		s.sort();
+		service.sort();
 		
 		assertEquals(0, list.indexOf(emailDto));
 	}
@@ -130,7 +131,7 @@ class NewsLetterSerTest {
 		list.add(emailDtoSecond);
 		
 
-		s.reverseSort();
+		service.reverseSort();
 		
 		assertEquals(1, list.indexOf(emailDtoSecond));
 	}
@@ -138,17 +139,18 @@ class NewsLetterSerTest {
 	@Test
 	public void testSearch() {
 		init();
-		nlr.init();
-		
+		repository.init();
+
 		//amikor nincs találat
 		List<EmailDto> searchList = new ArrayList<>();
-		searchList = nlr.searchByContent("__");
-		assertEquals(0, searchList.size());
+		searchList = service.searchByContent("__");
+		when(repository.searchByContent("__")).thenReturn(searchList);
+		verify(repository, times(1)).searchByContent("__");
 		
 		//amikor van találat
-		/*searchList = nlr.searchByContent("a");
-		assertEquals(1, searchList.size());*/
-
+		searchList = service.searchByContent("a");
+		when(repository.searchByContent("a")).thenReturn(searchList);
+		verify(repository, times(1)).searchByContent("a");
 	}
 
 }

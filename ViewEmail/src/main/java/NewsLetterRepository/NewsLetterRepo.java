@@ -95,7 +95,7 @@ public class NewsLetterRepo implements INewsLetterRep {
 	}
 
 	@Override
-	public List<EmailDto>  searchByContent(String inputContent) {
+	public List<EmailDto> searchByContent(String inputContent) {
 		List<EmailDto> list = new ArrayList<EmailDto>();
 		for (EmailDto emailDto : newsLetterList) {
 

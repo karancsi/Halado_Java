@@ -147,7 +147,7 @@ class NewsLetterSerTest {
 		when(repository.searchByContent("__")).thenReturn(searchList);
 		verify(repository, times(1)).searchByContent("__");
 		
-		//amikor van találat
+		//amikor van találat - több is 
 		searchList = service.searchByContent("a");
 		when(repository.searchByContent("a")).thenReturn(searchList);
 		verify(repository, times(1)).searchByContent("a");

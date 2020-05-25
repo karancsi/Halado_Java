@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -30,7 +30,7 @@ class NewsLetterSerTest {
 	Date date = new Date();
 	int index = 0;
 
-	@BeforeAll
+	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
 	}
@@ -133,6 +133,22 @@ class NewsLetterSerTest {
 		s.reverseSort();
 		
 		assertEquals(1, list.indexOf(emailDtoSecond));
+	}
+	
+	@Test
+	public void testSearch() {
+		init();
+		nlr.init();
+		
+		//amikor nincs találat
+		List<EmailDto> searchList = new ArrayList<>();
+		searchList = nlr.searchByContent("__");
+		assertEquals(0, searchList.size());
+		
+		//amikor van találat
+		/*searchList = nlr.searchByContent("a");
+		assertEquals(1, searchList.size());*/
+
 	}
 
 }

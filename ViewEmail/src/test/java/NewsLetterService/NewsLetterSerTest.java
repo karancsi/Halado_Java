@@ -1,6 +1,6 @@
 package NewsLetterService;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -30,7 +30,7 @@ class NewsLetterSerTest {
 	Date date = new Date();
 	int index = 0;
 
-	@Before
+	@BeforeAll
 	public void init() {
 		MockitoAnnotations.initMocks(this);
 	}

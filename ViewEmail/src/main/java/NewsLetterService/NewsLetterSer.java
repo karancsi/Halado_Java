@@ -42,19 +42,19 @@ public class NewsLetterSer implements INewsLetterSer {
 		return newsLetterRepo.getAllNewsLetter();
 	}
 
-
-
 	@Override
 	public void sort() {
 		newsLetterRepo.sort();
 		
 	}
 
-
-
 	public void reverseSort() {
 		newsLetterRepo.reverseSort();
 		
+	}
+	
+	public List<EmailDto> searchByContent(String inputContent) {
+		return newsLetterRepo.searchByContent(inputContent);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package NewsLetterEmail.Controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,8 +28,12 @@ public class EmailController {
 	private NewsLetterSer newsLetterService = new NewsLetterSer(newsLetterRepo);
 
 	public Date date = new Date(2020 - 10 - 10);
+	
+	private List<EmailDto> searchLetters = new ArrayList<EmailDto>();
 
 	UUID index;
+	
+	int counter = 0;
 
 	private List<EmailDto> letters = newsLetterService.getAllNewsLetter();
 
@@ -46,7 +51,7 @@ public class EmailController {
 		
 		mav.setViewName("emailList");
 		mav.addObject("letters", letters);
-
+		mav.addObject("searchLetters", searchLetters);
 		return mav;
 	}
 	
@@ -106,6 +111,22 @@ public class EmailController {
 		newsLetterService.save(emailDto, index);
 		mav.setViewName("redirect:/emailList");	
 	
+		return mav;
+	}
+	
+	@RequestMapping(value = "/search")
+	public ModelAndView SearchByContent(@RequestParam String inputContent) {
+		ModelAndView mav = new  ModelAndView();
+		
+		searchLetters = newsLetterService.searchByContent(inputContent);
+		
+		for (EmailDto emailDto : searchLetters) {
+			System.out.println(emailDto.getEmailMessage() + "" + emailDto.getEmailSubject());
+		}
+		counter = searchLetters.size();
+		mav.addObject("counter", counter);
+		mav.addObject("searchLetters", searchLetters);
+		mav.setViewName("redirect:/emailList"); 
 		return mav;
 	}
 	

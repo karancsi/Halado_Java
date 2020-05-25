@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
+import javax.validation.constraints.Email;
 
 import org.hibernate.boot.model.relational.Database;
 import org.springframework.stereotype.Repository;
@@ -68,12 +69,12 @@ public class NewsLetterRepo implements INewsLetterRep {
 
 	@Override
 	public void sort() {
-		for (int i = newsLetterList.size()-1; i >0; i--) {
+		for (int i = newsLetterList.size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
-				if (newsLetterList.get(j).getEmailDate().compareTo(newsLetterList.get(j+1).getEmailDate()) == 1) {
+				if (newsLetterList.get(j).getEmailDate().compareTo(newsLetterList.get(j + 1).getEmailDate()) == 1) {
 					EmailDto emailseged = newsLetterList.get(j);
-					newsLetterList.set(j, newsLetterList.get(j+1));
-					newsLetterList.set(j+1, emailseged);	
+					newsLetterList.set(j, newsLetterList.get(j + 1));
+					newsLetterList.set(j + 1, emailseged);
 				}
 			}
 		}
@@ -81,19 +82,28 @@ public class NewsLetterRepo implements INewsLetterRep {
 	}
 
 	public void reverseSort() {
-		for (int i = newsLetterList.size()-1; i >0; i--) {
+		for (int i = newsLetterList.size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
-				if (newsLetterList.get(j).getEmailDate().compareTo(newsLetterList.get(j+1).getEmailDate()) == -1) {
+				if (newsLetterList.get(j).getEmailDate().compareTo(newsLetterList.get(j + 1).getEmailDate()) == -1) {
 					EmailDto emailseged = newsLetterList.get(j);
-					newsLetterList.set(j, newsLetterList.get(j+1));
-					newsLetterList.set(j+1, emailseged);	
+					newsLetterList.set(j, newsLetterList.get(j + 1));
+					newsLetterList.set(j + 1, emailseged);
 				}
 			}
 		}
 
 	}
-		
+
+	@Override
+	public List<EmailDto>  searchByContent(String inputContent) {
+		List<EmailDto> list = new ArrayList<EmailDto>();
+		for (EmailDto emailDto : newsLetterList) {
+
+			if (emailDto.getEmailMessage().toLowerCase().contains(inputContent.toLowerCase()) || emailDto.getEmailSubject().toLowerCase().contains(inputContent.toLowerCase())) {
+				 list.add(emailDto);
+			}
+		}
+		return list;
 	}
-	
 
-
+}

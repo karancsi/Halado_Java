@@ -12,5 +12,6 @@ public interface INewsLetterSer {
 	List<EmailDto> getAllNewsLetter();
 	void sort();
 	void reverseSort();
+	List<EmailDto> searchByContent(String inputContent);
 	
 }

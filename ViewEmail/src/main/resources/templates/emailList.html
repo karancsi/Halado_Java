@@ -14,7 +14,7 @@ h1 {
 
 p {
   font-family: verdana;
-  color: white;
+  color: black;
   font-size: 20px;
 }
 form{
@@ -26,7 +26,7 @@ width:200px;
 padding: 15px 15px 15px;
 }
 .mytable{
-align="center" width="300" height="30"
+align = "center" width="300" height="30"
 }
   </style>
   
@@ -58,11 +58,52 @@ align="center" width="300" height="30"
 </tr>
 </table>
 
-
 <br><div style="text-align: center;"> <a href="/">Vissza a kezdőoldalra</a>
-<form action="/sortDesc"><button type="submit">Csökkenő sorrend</button></form>
-<form action="/sortInc"><button type="submit">Növekvő sorrend</button></form>
+<br>
+<br>
+<form action="/sortDesc"><button type="submit">Csökkenő sorrend dátum alapján</button></form>
+<br>
+<form action="/sortInc"><button type="submit">Növekvő sorrend dátum alapján</button></form>
 </div>
 <p> </p>
+<form action="/search">
+
+<br>
+<table border="2" style="width:100%; align:center">
+<tr>
+<td> Keresés tárgy, tartalom alapján</td>
+</tr>
+</table>
+<br>
+<input style="width: 300px; " id="inputContent" name="inputContent" type="text"><br><p></p>
+<button type="submit">Keresés tartalomra</button></form>
+
+<div>
+<table border="2" style="width:100%; align:center">
+<tr>
+<td>Találatok száma: <span th:text="${searchLetters.size()}"> </td>
+
+</tr>
+</table>
+
+<table border="2" style="width:100%">
+<tr>
+	<th align="center" width="300" height="30">ID: </th>
+	<th align="center" width="200" height="30">Tárgy: </th>
+	<th align="center" width="200" height="30">Üzenet: </th>
+	<th align="center" width="200" height="30">Dátum: </th>
+
+</tr>
+</table>
+<table border="2" style="width:100%; align:center;" th:each="letters : ${searchLetters}">
+<tr>
+<td  align="center" width="300" height="30"> <span th:text="${letters.id}"></td>
+<td  align="center" width="200" height="30"> <span th:text="${letters.emailSubject}"></td>
+<td  align="center" width="200" height="30"> <span th:text="${letters.emailMessage}"> </td>
+<td  align="center" width="200" height="30"> <span th:text="${#dates.format(letters.emailDate, 'yyyy-MM-dd')}"></td>
+</tr >
+
+</table>
+</div>
 
 </body></html>
